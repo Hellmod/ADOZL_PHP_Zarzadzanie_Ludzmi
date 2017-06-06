@@ -18,7 +18,7 @@
 if(@$_POST["wyslij"])
 	{
 	
-	for($i=7;$i<=9;$i++)
+	for($i=7;$i<=22;$i++)
 	{	
 		@${'a'.$i}=$_POST["a$i"];
 	}
@@ -28,7 +28,7 @@ if(@$_POST["wyslij"])
     $db = @mysql_select_db('firma', $connection)					or die('Nie mogę połączyć się z bazą danych');
     
     // dodajemy rekord do bazy
-	for($i=7;$i<=9;$i++)
+	for($i=7;$i<=22;$i++)
 	{	
 		if(${'a'.$i}!='')	
 		{

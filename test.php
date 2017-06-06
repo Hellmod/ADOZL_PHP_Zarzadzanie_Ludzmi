@@ -28,31 +28,19 @@ TEST </br></br>
 
 
 
-	if(isset($_SESSION['Login']))
-	{
-	//---------
-	/*
-	if(isset($_SESSION['Login']))
-	{
-		echo'</br>brak dostempu</br>';
-		echo 'typ: '.$_SESSION['Typ'].'</br>'; 
-	}
-	*/
-	if ($_SESSION['Login']&& ($_SESSION['Typ']=='Admin'))
-	{
-		echo'</br>jestś  Admin</br>';
-	}
-	else 	if ($_SESSION['Typ']=='User')
-	{
-		echo'</br>jestś  Użytkownikiem</br>';
-	}
-	else
-	{
-		echo'</br>zaloguj się</br>';
-	}
-	echo 'ID: '.$_SESSION['ID'];
-	//---------
-	}
+				for($i=0;$i<=14;$i++){
+				for($j=0;$j<=18;$j++)
+					$tablica[$i][$j]="bar";				
+			}
+			
+			echo '<table border="1">';
+			foreach($tablica as $wartosc){
+				echo'<tr>';	
+					for($i=0;$i<=17;$i++)
+						echo '<td>'.@$wartosc[$i].'</td>';
+				echo'</tr>';
+			}
+			echo '</table>';
 
 ?>
 <a href="wyl.php">wyloguj</a>
