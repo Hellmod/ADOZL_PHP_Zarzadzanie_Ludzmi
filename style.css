@@ -12,8 +12,7 @@
 	background-color: #f0f0f0;
 	float: right;
 	width: 220px;
-	height: 110px;
-	
+	height: 110px;	
 }
 
 #topcontent
@@ -21,11 +20,9 @@
 	float: left;
 	width: 740px;
 	height: 150px;
-	//width: 717px;
 	background-color: #404040;
 	color: #ffffff;
 	text-align: center;
-
 }
 
 #menu
@@ -37,12 +34,13 @@
 #content
 {
 	text-align: center;
+	border: 2px solid #000000;
 }
 
 table {
 	margin: 0 auto;
 	text-align: left; 
-  }
+}
   
   
   
