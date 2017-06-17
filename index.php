@@ -41,10 +41,18 @@
 			$_SESSION['ID']=$wiersz['ID']; 
 			header('Location: index.php');
 		}
+
+		if ($_SESSION['Typ']=='Admin')
+			header('Location: index.php?id=Admin');
+		else if ($_SESSION['Typ']=='User')
+			header('Location: index.php?id=User');
+		else		
+			header('Location: index.php?id=start');		
 	}
 	
 	else
 	{
+
 ?>
 
 <div id="logowanie">
@@ -64,17 +72,16 @@
 </div>
 	<div id="content">
 		<?php
-			
+			/*
 			@$i=$_GET['id'];
 			if(!isset($_SESSION['Login']))	require('start.php');
 			else 						require('akademiki.php');		
+			*/
 			
-			/*
-			$i='akademiki.php';
 			@$i=$_GET['id'];
 			if(!isset($i))	require('start.php');
-			else 				require('subpage/'.$i.'.php');
-			*/
+			else 				require($i.'.php');
+			
 		?>
 	</div>
 </div>
