@@ -1,14 +1,11 @@
 <?php
 	session_start(); 
-	require_once('baza.php');
-	
+	require_once('baza.php');	
 ?>
 <html>
 <head>
-<meta charset="UTF-8">
-</head>
-<style>
-</style>		
+	<meta charset="UTF-8">
+</head>		
 <body>
 
 

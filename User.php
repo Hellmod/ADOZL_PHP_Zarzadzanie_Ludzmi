@@ -1,3 +1,8 @@
+<?php
+	if ($_SESSION['Typ']!='User')
+			header('Location: index.php?id=start');
+?>
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <link rel="stylesheet" href="/resources/demos/style.css">
