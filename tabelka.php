@@ -4,7 +4,7 @@
 		$data=@$_POST["Date"];
 		$tablica = explode("/", $data);
 		@$data= $tablica[2].'-'.$tablica[1].'-'.$tablica[0];
-	
+		
 
 ?>
     <form method="post" action="wyjscie.php">

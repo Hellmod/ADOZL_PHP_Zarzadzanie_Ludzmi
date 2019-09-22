@@ -4,7 +4,6 @@
 ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -27,58 +26,48 @@
 	
 		$data=@$_POST["Date"];
 		$tab = explode("/", $data);
-		@$data= $tab[2].'-'.$tab[1].'-'.$tab[0];
-		echo $data;
+		@$data= $tab[2].'-'.$tab[0].'-'.$tab[1];	// przejśćie z notacji daty polskiej na amerykańską 
+		echo $tab[2].'-'.$tab[1].'-'.$tab[0];
 
 
 ?>
     
 
  <?php
-			$wykonaj=mysql_query("SELECT * from miejsca");  
+
+			$wykonaj=mysql_query("SELECT * from miejsca WHERE DATA = '$data'");  
+			
 			for($i=7;$i<=22;$i++){
 				$wywalkolumne[$i]=false;				
 			}
-			$licznik=0;
-
-			while ($wiersz = mysql_fetch_object($wykonaj))
-			{
-				if($wiersz->DATA==$data){
-					
-					for($i=7;$i<=22;$i++)
-					{
+			$licznik=0;// KTÓRE MIEJSCE TERAZ ANALIZUJEMY
+			
+			while ($wiersz = mysql_fetch_object($wykonaj)){
+				$tablica[$licznik][0]=$wiersz->ID;
+				$tablica[$licznik][1]=$wiersz->MIEJSCE;
+					for($i=7;$i<=22;$i++){						
 						$a='a'.$i;	
 						
-						if($wiersz->$a==$_SESSION['ID'])
-						{
+						if($wiersz->$a==$_SESSION['ID']){ // MOJE MIEJSCE 
 							$wywalkolumne[$i] = true;
-							$tablica[$licznik][$i-5]=${'a'.$i}='<div style="background-color: #0000cd; width: 20; height: 20; " ></div>';
+							$tablica[$licznik][$i-5]=${'a'.$i}='<div class="blueSquare" ></div>'; 
 						}	
-						else if($wiersz->$a=="")
+						else if($wiersz->$a=="")	// PUSTE MIEJSCE
 							$tablica[$licznik][$i-5]='<input type="radio" name="'.$a.'" value="'.$wiersz->ID.'" id="'.$a.'" align="center"/> ';
 
-						else
-							$tablica[$licznik][$i-5]='<div style="background-color: #cd0000; width: 20; height: 20; " ></div> ';
-
-
+						else	// KTOŚ ZAJOŁ TO MIEJSCE
+							$tablica[$licznik][$i-5]='<div class="redSquare" ></div> ';
 					}
-					if($wiersz->DATA==$data){
-						$tablica[$licznik][0]=$wiersz->ID;
-						$tablica[$licznik][1]=$wiersz->MIEJSCE;
-						
-					}
-					$licznik++;	
-				}			
+				$licznik++;	
+	
 			}
 // nie wiem czemu to nie działą :C
 		// foreach($tablica as $wartosc){
 		// 	for($i=7;$i<=22;$i++)
 		// 		if($wywalkolumne[$i] && $wartosc[$i-5]!='<div style="background-color: #0000cd; width: 20; height: 20; " ></div>'){
 		// 			$wartosc[$i-5]='<div style="background-color: #cd0000; width: 20; height: 20; " ></div> ';
-		// 	}			
-
-		// }	
-
+		// 	}	
+		// }
 
 ?>		
 		<form method="post" action="wyjscie.php">
@@ -89,14 +78,14 @@
 <?php
 	if(@$tablica){
 		foreach($tablica as $wartosc){
-		for($i=7;$i<=22;$i++)
-			if($wywalkolumne[$i] && $wartosc[$i-5]!='<div style="background-color: #0000cd; width: 20; height: 20; " ></div>'){
-				$wartosc[$i-5]='<div style="background-color: #cd0000; width: 20; height: 20; " ></div> ';
-		}				
+			for($i=7;$i<=22;$i++)
+				if($wywalkolumne[$i] && $wartosc[$i-5]!='<div class="blueSquare" ></div>'){
+					$wartosc[$i-5]='<div class="redSquare" ></div> ';
+			}				
 			echo'<tr>';	
 			for($i=0;$i<=17;$i++)
 				echo '<td>'.@$wartosc[$i].'</td>';
-		echo'</tr>';
+			echo'</tr>';
 		}
 	}
 ?>

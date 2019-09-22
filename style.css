@@ -41,6 +41,18 @@ table {
 	margin: 0 auto;
 	text-align: left; 
 }
+
+.redSquare{
+	background-color: #cd0000; 
+	width: 20; 
+	height: 20;
+}
+
+.blueSquare{
+	background-color: #0000cd; 
+	width: 20; 
+	height: 20;
+}
   
   
   
