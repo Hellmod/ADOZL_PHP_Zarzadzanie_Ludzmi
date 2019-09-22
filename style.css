@@ -53,9 +53,38 @@ table {
 	width: 20; 
 	height: 20;
 }
-  
-  
-  
+
+.error{
+	color: #ff0000;
+}
+
+.r_forma{
+	margin-bottom: 5px;	
+	display: block;
+}
+
+.r_forma2{
+	margin-bottom: 9px;	
+	display: block;
+}
+
+#r_rejestracja{
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;	
+	margin-top: 70px;
+}
+
+#r_label{
+	margin-right: 10px;
+	float: left;
+	
+}
+
+#r_input{
+	float: left;	
+	
+}
   
   
   

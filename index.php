@@ -1,6 +1,6 @@
 ﻿<?php
 	session_start(); 
-	require_once('baza.php');
+	require_once('subpage/baza.php');
 	
 ?>
 <html>
@@ -43,13 +43,15 @@
 		}
 
 		if ($_SESSION['Typ']=='Admin')
-			header('Location: index.php?id=Admin');
+			header('Location: index.php?id=subpage/Admin');
 		else if ($_SESSION['Typ']=='User')
-			header('Location: index.php?id=User');
+			header('Location: index.php?id=subpage/User');
 		else		
-			header('Location: index.php?id=start');		
+			header('Location: index.php?id=subpage/start');		
 	}
-	
+	else if(isset($_POST['Zarejestruj'])){
+		header('Location: index.php?id=subpage/rejestracja');
+	}
 	else
 	{
 
@@ -59,8 +61,8 @@
 
 		<?php
 			@$i=$_GET['id'];
-			if(isset($_SESSION['Login']))	require('wylogowywanie.php');
-			else 							require('log.php');		
+			if(isset($_SESSION['Login']))	require('subpage/wylogowywanie.php');
+			else 							require('subpage/log.php');		
 		?>
 </div>
 <?php	}	?>
@@ -79,7 +81,7 @@
 			*/
 			
 			@$i=$_GET['id'];
-			if(!isset($i))	require('start.php');
+			if(!isset($i))	require('subpage/start.php');
 			else 				require($i.'.php');
 			
 		?>

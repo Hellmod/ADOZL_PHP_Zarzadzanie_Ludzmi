@@ -1,6 +1,6 @@
 <?php
 	if ($_SESSION['Typ']!='User')
-			header('Location: index.php?id=start');
+			header('Location: index.php?id=subpage/start');
 ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -25,10 +25,11 @@
 
 	
 		$data=@$_POST["Date"];
+	if(isset($data)){
 		$tab = explode("/", $data);
 		@$data= $tab[2].'-'.$tab[0].'-'.$tab[1];	// przejśćie z notacji daty polskiej na amerykańską 
 		echo $tab[2].'-'.$tab[1].'-'.$tab[0];
-
+	}
 
 ?>
     
