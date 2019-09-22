@@ -11,14 +11,14 @@ function validate_pass(p,r) {
 
 <form method="post" action="" id="r_rejestracja" >
 	<div id="r_label">
-		<label for="login" class="r_forma2">Login:</label>
+		<label for="login" class="r_forma2">Telefon:</label>
 		<label for="pass" class="r_forma2">Hasło:</label>
 		<label for="repPass" class="r_forma2">Powtórz hasło:</label>
 		<label for="email" class="r_forma2">E-mail:</label>
 
 	</div>
 	<div id="r_input">
-		<input type="text" name="login"  id="login" class="r_forma" required>
+		<input type="tel" name="login" placeholder="601-102-203" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" id="login" class="r_forma" required>
 		<input type="password" name="pass" id="pass" class="r_forma" required required>
 		<input type="password" name="repPass" id="repPass" class="r_forma" style="display: inline ;"  required onchange="validate_pass('pass','repPass')">
 		<span id="ipass" class="error"></span>
@@ -70,7 +70,7 @@ if(@$_POST["rejestracja"])	{
 		$zapytanie ="INSERT INTO `user` (`ID`, `LOGIN`, `PASSWORD`,`EMAIL`,`KOD`, `TYPE`) VALUES (NULL, '".$login."', '".md5($haslo)."','".$email."','".$kod."', 'User');" ;
 		$ins = @mysql_query($zapytanie);
 		if($ins){
-			$tytul = "Potwierdzenie meila licytacja";
+			$tytul = "Potwierdzenie meila rozdawanie ulotek";
 			$wiadomosc = "Kod: ".$kod;
 				// użycie funkcji mail
 			mail($email, $tytul, $wiadomosc);

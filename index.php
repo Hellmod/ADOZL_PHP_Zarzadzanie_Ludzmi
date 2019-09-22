@@ -14,7 +14,7 @@
   <meta name="generator" content="WebSite PRO 4.3" />
   <meta name="author" content="Autor_dokumentu" />
   <meta name="description" content="Opis" />
-  <title>Logowanie</title>
+  <title>Rozdawane ulotek</title>
   <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>

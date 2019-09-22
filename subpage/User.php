@@ -11,7 +11,8 @@
     $(function() {
         $("#datepicker").datepicker();
     });
-	
+
+
 </script>
 
 
@@ -94,3 +95,16 @@
 		<input type="submit" name="wyslij" value="Wyślij">
 		<input type="reset" name="wyslij" value="Restart">
 		</form>
+<script>
+	/*
+var radios = document.getElementsByTagName('input');
+for(i=0; i<radios.length; i++ ) {
+    radios[i].onclick = function(e) {
+        if(e.ctrlKey) {
+            this.checked = false;
+        }
+    }
+}
+	*/
+
+</script>
