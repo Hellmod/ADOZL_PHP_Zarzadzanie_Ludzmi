@@ -39,7 +39,7 @@ if(@$_POST["wyslij"])
 			if($ins) 
 			{
 				echo "Rekord został dodany poprawnie";
-				header('Location: index.php');
+				header('Location: ../index.php');
 			}
 			else echo "Błąd nie udało się dodać nowego rekordu";
 			echo ("</br></br>");

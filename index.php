@@ -69,8 +69,8 @@
 <div style="clear:both;"></div>
 
 <div id="menu">
-<a href="test.php">tset</a>
-<a href="downolad.php">downolad</a>
+<a href="subpage/test.php">tset</a>
+<a href="subpage/downolad.php">downolad</a>
 </div>
 	<div id="content">
 		<?php

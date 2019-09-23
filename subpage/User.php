@@ -55,7 +55,7 @@
 							$tablica[$licznik][$i-5]=${'a'.$i}='<div class="blueSquare" ></div>'; 
 						}	
 						else if($wiersz->$a=="")	// PUSTE MIEJSCE
-							$tablica[$licznik][$i-5]='<input type="radio" name="'.$a.'" value="'.$wiersz->ID.'" id="'.$a.'" align="center"/> ';
+							$tablica[$licznik][$i-5]='<input type="checkbox" name="'.$a.'" value="'.$wiersz->ID.'" class="'.$a.'" align="center"/> ';
 
 						else	// KTOŚ ZAJOŁ TO MIEJSCE
 							$tablica[$licznik][$i-5]='<div class="redSquare" ></div> ';
@@ -72,7 +72,7 @@
 		// }
 
 ?>		
-		<form method="post" action="wyjscie.php">
+		<form method="post" action="subpage/wyjscie.php">
 		<table border="1">
         <tr>
         	<td>ID</td> <td>MIEJSCE</td> <td>7</td> <td>8</td> <td>9</td> <td>10</td> <td>11</td> <td>12</td> <td>13</td> <td>14</td> <td>15</td> <td>16</td> <td>17</td> <td>18</td> <td>19</td> <td>20</td> <td>21</td> <td>22</td> 
@@ -83,7 +83,8 @@
 			for($i=7;$i<=22;$i++)
 				if($wywalkolumne[$i] && $wartosc[$i-5]!='<div class="blueSquare" ></div>'){
 					$wartosc[$i-5]='<div class="redSquare" ></div> ';
-			}				
+			}	
+						
 			echo'<tr>';	
 			for($i=0;$i<=17;$i++)
 				echo '<td>'.@$wartosc[$i].'</td>';
@@ -93,18 +94,31 @@
 ?>
 		</table>
 		<input type="submit" name="wyslij" value="Wyślij">
-		<input type="reset" name="wyslij" value="Restart">
+
 		</form>
-<script>
-	/*
-var radios = document.getElementsByTagName('input');
-for(i=0; i<radios.length; i++ ) {
-    radios[i].onclick = function(e) {
-        if(e.ctrlKey) {
-            this.checked = false;
-        }
+		<script>
+
+
+var checkboxs = document.getElementsByTagName('input');
+for(i=0; i<checkboxs.length; i++ ) {
+    checkboxs[i].onclick = function(a) {
+       //if(a.ctrlKey) {
+		var x=document.getElementsByClassName(this.className);
+		if(this.checked){
+			for(j=0; j<x.length; j++ ) 
+				x[j].disabled = true;
+			
+			this.disabled = false;
+		}
+		else{
+			for(j=0; j<x.length; j++ ) 
+				x[j].disabled = false;
+		
+			//this.disabled = true;
+		}
+       // }
     }
 }
-	*/
+	
 
 </script>
