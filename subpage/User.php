@@ -18,7 +18,7 @@
 
 
 <form method="post" action="">
-    <p>Date: <input type="text" id="datepicker" name="Date"  onchange="this.form.submit();"></p>
+    <p>Data: <input type="text" id="datepicker" name="Date"  onchange="this.form.submit();"></p>
 </form>
 
 <?php
@@ -45,53 +45,55 @@
 			$licznik=0;// KTÓRE MIEJSCE TERAZ ANALIZUJEMY
 			
 			while ($wiersz = mysql_fetch_object($wykonaj)){
-				$tablica[$licznik][0]=$wiersz->ID;
-				$tablica[$licznik][1]=$wiersz->MIEJSCE;
+				//$tablica[$licznik][0]=$wiersz->ID;
+				$tablica[$licznik][0]=$wiersz->MIEJSCE;
 					for($i=7;$i<=22;$i++){						
 						$a='a'.$i;	
 						
 						if($wiersz->$a==$_SESSION['ID']){ // MOJE MIEJSCE 
 							$wywalkolumne[$i] = true;
-							$tablica[$licznik][$i-5]=${'a'.$i}='<div class="blueSquare" ></div>'; 
+							$tablica[$licznik][$i-6]=${'a'.$i}='<div class="blueSquare .bg-primary" ></div>'; 
 						}	
 						else if($wiersz->$a=="")	// PUSTE MIEJSCE
-							$tablica[$licznik][$i-5]='<input type="checkbox" name="'.$a.'" value="'.$wiersz->ID.'" class="'.$a.'" align="center"/> ';
+							$tablica[$licznik][$i-6]='<input type="checkbox" name="'.$a.'" value="'.$wiersz->ID.'" class="'.$a.'" align="center"/> ';
 
 						else	// KTOŚ ZAJOŁ TO MIEJSCE
-							$tablica[$licznik][$i-5]='<div class="redSquare" ></div> ';
+							$tablica[$licznik][$i-6]='<div class="redSquare" ></div> ';
 					}
 				$licznik++;	
 	
 			}
-// nie wiem czemu to nie działą :C
-		// foreach($tablica as $wartosc){
-		// 	for($i=7;$i<=22;$i++)
-		// 		if($wywalkolumne[$i] && $wartosc[$i-5]!='<div style="background-color: #0000cd; width: 20; height: 20; " ></div>'){
-		// 			$wartosc[$i-5]='<div style="background-color: #cd0000; width: 20; height: 20; " ></div> ';
-		// 	}	
-		// }
+
 
 ?>		
 		<form method="post" action="subpage/wyjscie.php">
-		<table border="1">
+		<table class="table table-bordered">
+  		<thead>
         <tr>
-        	<td>ID</td> <td>MIEJSCE</td> <td>7</td> <td>8</td> <td>9</td> <td>10</td> <td>11</td> <td>12</td> <td>13</td> <td>14</td> <td>15</td> <td>16</td> <td>17</td> <td>18</td> <td>19</td> <td>20</td> <td>21</td> <td>22</td> 
-        </tr>
-<?php
-	if(@$tablica){
-		foreach($tablica as $wartosc){
-			for($i=7;$i<=22;$i++)
-				if($wywalkolumne[$i] && $wartosc[$i-5]!='<div class="blueSquare" ></div>'){
-					$wartosc[$i-5]='<div class="redSquare" ></div> ';
-			}	
-						
-			echo'<tr>';	
-			for($i=0;$i<=17;$i++)
-				echo '<td>'.@$wartosc[$i].'</td>';
-			echo'</tr>';
-		}
-	}
-?>
+        	<th scope="col">MIEJSCE</th> <th scope="col">7</th> <th scope="col">8</th> <th scope="col">9</th> <th scope="col">10</th> <th scope="col">11</th> <th scope="col">12</th> <th scope="col">13</th> <th scope="col">14</th> <th scope="col">15</th> <th scope="col">16</th> <th scope="col">17</th> <th scope="col">18</th> <th scope="col">19</th> <th scope="col">20</th> <th scope="col">21</th> <th scope="col">22</th> 
+		</tr>
+		</thead>
+			<tbody>
+				<?php
+					if(@$tablica){
+						foreach($tablica as $wartosc){
+							for($i=7;$i<=22;$i++)
+								if($wywalkolumne[$i] && $wartosc[$i-6]!='<div class="blueSquare .bg-primary" ></div>'){
+									$wartosc[$i-6]='<div class="redSquare" ></div> ';
+							}	
+										
+							echo'<tr>';	
+							echo '<th scope="row">'.@$wartosc[0].'</td>';
+							for($i=1;$i<=16;$i++){
+
+								echo '<td>'.@$wartosc[$i].'</td>';
+							}
+								
+							echo'</tr>';
+						}
+					}
+				?>
+			</tbody>
 		</table>
 		<input type="submit" name="wyslij" value="Wyślij">
 
