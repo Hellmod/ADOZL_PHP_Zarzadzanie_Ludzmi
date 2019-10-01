@@ -14,8 +14,8 @@
             </tr>
 
  <?php
-			$wykonaj=mysql_query("SELECT * from miejsca");  			
-			while ($wiersz = mysql_fetch_object($wykonaj))
+			$wykonaj=mysqli_query($connection,"SELECT * from miejsca");  			
+			while ($wiersz = mysqli_fetch_object($wykonaj))
 			{
 				for($i=7;$i<=9;$i++)
 				{

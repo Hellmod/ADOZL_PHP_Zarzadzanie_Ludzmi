@@ -22,8 +22,8 @@ function losowy_ciag($dlugosc){
 
 
 	$zapytanie ='SELECT Kod, email from User WHERE ID = "' .$_SESSION['ID']. '"' ;
-	$wykonaj=mysql_query($zapytanie);  
-    $wiersz = mysql_fetch_object($wykonaj);
+	$wykonaj=mysqli_query($connection,$zapytanie);  
+    $wiersz = mysqli_fetch_object($wykonaj);
 	$kod=$wiersz->Kod;
 	$email=$wiersz->email;
 	if($kod!=""){
@@ -78,7 +78,7 @@ function losowy_ciag($dlugosc){
 	if(isset($_POST['PassChange'])){
         $haslo=$_POST['pass'];
        	$zapytanie ="UPDATE `user` SET `PASSWORD` = '".md5($haslo)."' WHERE `user`.`ID` = ".$_SESSION['ID'].";";
-	    $ins = @mysql_query($zapytanie);
+	    $ins = @mysqli_query($connection,$zapytanie);
 		if($ins){
 			echo "<script>alert('Chasło zminione')</script>";
 		}
@@ -89,15 +89,15 @@ function losowy_ciag($dlugosc){
 	else if(isset($_POST['EmailChange'])){
 		$email=$_POST['email'];
 		$zapytanie ='SELECT * from user where email = "' .$email. '"' ;
-		$wykonaj=mysql_query($zapytanie);  
-		$wiersz = mysql_fetch_object($wykonaj);
+		$wykonaj=mysqli_query($connection,$zapytanie);  
+		$wiersz = mysqli_fetch_object($wykonaj);
 		if($wiersz)
 			header('Location: index.php?id=subpage/emailistnieje');
 
 
 		
        	$zapytanie ="UPDATE `user` SET `EMAIL` = '".$email."',`KOD`='".losowy_ciag(4)."' WHERE `user`.`ID` = ".$_SESSION['ID'].";";
-	    $ins = @mysql_query($zapytanie);
+	    $ins = @mysqli_query($connection,$zapytanie);
 		if($ins){
 			echo "<script>alert('Email zmieniony')</script>";
 		}
@@ -108,7 +108,7 @@ function losowy_ciag($dlugosc){
 	else if(isset($_POST['EmailConf'])){
 		if($kod==$_POST['kod']){
 			$zapytanie ="UPDATE `user` SET `kod` = '' WHERE `user`.`ID` = ".$_SESSION['ID'].";";
-			$ins = @mysql_query($zapytanie);
+			$ins = @mysqli_query($connection,$zapytanie);
 			if($ins){
 				echo "<script>alert('Email potwierdzony')</script>";
 			}

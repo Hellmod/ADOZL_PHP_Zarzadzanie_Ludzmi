@@ -16,5 +16,5 @@
 16	Rejmonta	2017-06-06																
 17	Ingardena	2017-06-06																
 18	Krupnicza	2017-06-06																
-19	AGH	2019-08-20																
+19	AGH	2019-08-20							6	6								
 20	Krupnicza	2019-08-20																

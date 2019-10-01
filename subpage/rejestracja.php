@@ -51,16 +51,16 @@ if(@$_POST["rejestracja"])	{
 	$temp=true;
 	
 	$zapytanie ='SELECT * from user where login = "' .$login. '"' ;
-	$wykonaj=mysql_query($zapytanie);  
-    $wiersz = mysql_fetch_object($wykonaj);
+	$wykonaj=mysqli_query($connection,$zapytanie);  
+    $wiersz = mysqli_fetch_object($wykonaj);
 	if($wiersz){
 		$temp=false;
 		header('Location: index.php?id=subpage/loginistnieje');
 	}
 
 	$zapytanie ='SELECT * from user where email = "' .$email. '"' ;
-	$wykonaj=mysql_query($zapytanie);  
-	$wiersz = mysql_fetch_object($wykonaj);
+	$wykonaj=mysqli_query($connection,$zapytanie);  
+	$wiersz = mysqli_fetch_object($wykonaj);
 	if($wiersz){
 		$temp=false;
 		header('Location: index.php?id=subpage/emailistnieje');
@@ -68,7 +68,7 @@ if(@$_POST["rejestracja"])	{
 
 	if($temp){
 		$zapytanie ="INSERT INTO `user` (`ID`, `LOGIN`, `PASSWORD`,`EMAIL`,`KOD`, `TYPE`) VALUES (NULL, '".$login."', '".md5($haslo)."','".$email."','".$kod."', 'User');" ;
-		$ins = @mysql_query($zapytanie);
+		$ins = @mysqli_query($connection,$zapytanie);
 		if($ins){
 			$tytul = "Potwierdzenie meila rozdawanie ulotek";
 			$wiadomosc = "Kod: ".$kod;

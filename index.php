@@ -26,8 +26,8 @@ require_once('subpage/baza.php');
 		$l = @$_POST["Login"];
 		$p = md5(@$_POST["Haslo"]);
 		$q = "SELECT * from user where LOGIN='" . $l . "' and PASSWORD='" . $p . "'";
-		$w = mysql_query($q);
-		$wiersz = @mysql_fetch_array($w);
+		$w = mysqli_query($connection,$q);
+		$wiersz = @mysqli_fetch_array($w);
 		if (is_null($wiersz['LOGIN'])) echo '<script>alert("zły login lub chasło");</script>';
 		else {
 			$_SESSION['Login'] = $_POST['Login'];

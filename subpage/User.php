@@ -37,14 +37,14 @@
 
  <?php
 
-			$wykonaj=mysql_query("SELECT * from miejsca WHERE DATA = '$data'");  
+			$wykonaj=mysqli_query($connection,"SELECT * from miejsca WHERE DATA = '$data'");  
 			
 			for($i=7;$i<=22;$i++){
 				$wywalkolumne[$i]=false;				
 			}
 			$licznik=0;// KTÓRE MIEJSCE TERAZ ANALIZUJEMY
 			
-			while ($wiersz = mysql_fetch_object($wykonaj)){
+			while ($wiersz = mysqli_fetch_object($wykonaj)){
 				//$tablica[$licznik][0]=$wiersz->ID;
 				$tablica[$licznik][0]=$wiersz->MIEJSCE;
 					for($i=7;$i<=22;$i++){						

@@ -15,8 +15,8 @@
 
 <?php
 
-		$wykonaj=mysql_query("SELECT * from miejsca");  
-		while ($wiersz = mysql_fetch_object($wykonaj))
+		$wykonaj=mysqli_query($connection,"SELECT * from miejsca");  
+		while ($wiersz = mysqli_fetch_object($wykonaj))
 		{
 			for($i=7;$i<=22;$i++)
 			{
@@ -25,9 +25,9 @@
 
 				//dostajemy w wiersz->$a zawartosci kolejnych kolumn następnie pętlą for przechodzimy po kolejnych kolumnach doposując numer kilumny do $a np $a1 
 				
-				$wykonaj2=mysql_query('SELECT * from user where id="'.$wiersz->$a.'"');//where id="$wiersz->$a"
+				$wykonaj2=mysqli_query($connection,'SELECT * from user where id="'.$wiersz->$a.'"');//where id="$wiersz->$a"
 
-				while ($wiersz2 = mysql_fetch_object($wykonaj2))
+				while ($wiersz2 = mysqli_fetch_object($wykonaj2))
 				{
 					//echo'dzialam';
 					${'a'.$i}=$wiersz->$a.'- '.$wiersz2->LOGIN;
@@ -39,5 +39,5 @@
 			 
 			
 		}
-		mysql_close($connection);
+		mysqli_close($connection);
 ?>
